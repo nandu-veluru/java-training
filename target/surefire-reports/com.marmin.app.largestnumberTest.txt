@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: com.marmin.app.GreaterThan100Test
+Test set: com.marmin.app.largestnumberTest
 -------------------------------------------------------------------------------
-Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.078 s -- in com.marmin.app.GreaterThan100Test
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s -- in com.marmin.app.largestnumberTest

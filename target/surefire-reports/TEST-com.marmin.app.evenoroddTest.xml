@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.marmin.app.MultipleTwoNumbersTest" time="0.02" tests="10" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.marmin.app.evenoroddTest" time="0.023" tests="11" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -53,14 +53,15 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testMultiplyThreeEqual" classname="com.marmin.app.MultipleTwoNumbersTest" time="0.002"/>
-  <testcase name="testMultiplyOneNotEqual" classname="com.marmin.app.MultipleTwoNumbersTest" time="0.001"/>
-  <testcase name="testMultiplyNotEqual" classname="com.marmin.app.MultipleTwoNumbersTest" time="0.002"/>
-  <testcase name="testMultiplyTwoEqual" classname="com.marmin.app.MultipleTwoNumbersTest" time="0.0"/>
-  <testcase name="testMultiplyOneEqual" classname="com.marmin.app.MultipleTwoNumbersTest" time="0.001"/>
-  <testcase name="testMultiplyFourEqual" classname="com.marmin.app.MultipleTwoNumbersTest" time="0.001"/>
-  <testcase name="testMultiplyTwoNotEqual" classname="com.marmin.app.MultipleTwoNumbersTest" time="0.001"/>
-  <testcase name="testMultiplyEqual" classname="com.marmin.app.MultipleTwoNumbersTest" time="0.001"/>
-  <testcase name="testValueIsNull" classname="com.marmin.app.MultipleTwoNumbersTest" time="0.001"/>
-  <testcase name="testMultiplyThreeNotEqual" classname="com.marmin.app.MultipleTwoNumbersTest" time="0.001"/>
+  <testcase name="testOneEven" classname="com.marmin.app.evenoroddTest" time="0.001"/>
+  <testcase name="testTwoEven" classname="com.marmin.app.evenoroddTest" time="0.001"/>
+  <testcase name="testEven" classname="com.marmin.app.evenoroddTest" time="0.001"/>
+  <testcase name="testThreeEven" classname="com.marmin.app.evenoroddTest" time="0.001"/>
+  <testcase name="testNotThreeEven" classname="com.marmin.app.evenoroddTest" time="0.001"/>
+  <testcase name="testNotFourEven" classname="com.marmin.app.evenoroddTest" time="0.001"/>
+  <testcase name="testNotOneEven" classname="com.marmin.app.evenoroddTest" time="0.001"/>
+  <testcase name="testFourEven" classname="com.marmin.app.evenoroddTest" time="0.001"/>
+  <testcase name="testNotTwoEven" classname="com.marmin.app.evenoroddTest" time="0.001"/>
+  <testcase name="testNotEven" classname="com.marmin.app.evenoroddTest" time="0.001"/>
+  <testcase name="testValueIsNull" classname="com.marmin.app.evenoroddTest" time="0.001"/>
 </testsuite>
