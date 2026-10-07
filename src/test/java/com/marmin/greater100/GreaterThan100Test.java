@@ -2,85 +2,26 @@ package com.marmin.app;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+import java.util.Random;
+
 
 class GreaterThan100Test {
     public GreaterThan100 rike = new GreaterThan100();
+    Random random = new Random();
+    int randomNumber;
 
     @Test
-    void testGreater100() {
+    void testShouldReturnTrueForNumberGreaterThan100() {
+        randomNumber = random.nextInt(101, Integer.MAX_VALUE);
         boolean expected = true;
-        boolean actual = rike.isGreater(900); 
+        boolean actual = rike.isGreater(randomNumber); 
         assertEquals(expected, actual);
     }
     @Test
-    void testGreaterOne100() {
-        boolean expected = true;
-        boolean actual = rike.isGreater(870); 
-        assertEquals(expected, actual);
-    }
-    @Test
-    void testGreaterTwo100() {
-        boolean expected = true;
-        boolean actual = rike.isGreater(198); 
-        assertEquals(expected, actual);
-    }
-    @Test
-    void testGreaterThree100() {
-        boolean expected = true;
-        boolean actual = rike.isGreater(7689); 
-        assertEquals(expected, actual);
-    }
-    @Test
-    void testGreaterFour100() {
-        boolean expected = true;
-        boolean actual = rike.isGreater(1234); 
-        assertEquals(expected, actual);
-    }
-    @Test
-    void testGreaterFive100() {
-        boolean expected = true;
-        boolean actual = rike.isGreater(9090); 
-        assertEquals(expected, actual);
-    }
-    @Test
-    void testGreaterNot100() {
+    void testShouldReturnFalseForNumberLesserThan100() {
+        randomNumber = random.nextInt(Integer.MIN_VALUE, 100);
         boolean expected = false;
-        boolean actual = rike.isGreater(-90); 
+        boolean actual = rike.isGreater(randomNumber); 
         assertEquals(expected, actual);
-    }
-    @Test
-    void testGreaterNotone100() {
-        boolean expected = false;
-        boolean actual = rike.isGreater(1); 
-        assertEquals(expected, actual);
-    }
-    @Test
-    void testGreaterNotTwo100() {
-        boolean expected = false;
-        boolean actual = rike.isGreater(99); 
-        assertEquals(expected, actual);
-    }
-    @Test
-    void testGreaterNotThree100() {
-        boolean expected = false;
-        boolean actual = rike.isGreater(-1); 
-        assertEquals(expected, actual);
-    }
-    @Test
-    void testConditionTrue() {
-        boolean expected = true;
-        boolean actual = rike.isGreater(160); 
-        assertEquals(expected, actual);
-    }
-    @Test
-    void testConditionFalse() {
-        boolean expected = false;
-        boolean actual = rike.isGreater(0); 
-        assertEquals(expected, actual);
-    }
-    @Test
-    public void testValueIsNull() {
-        String x = null;
-        assertNull(x); 
     }
 }

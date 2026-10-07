@@ -2,72 +2,52 @@ package com.marmin.app;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+import java.util.Random;
+
 
 class evenoroddTest{
     public evenorodd EvenOdd = new evenorodd();
+    int randomNum;
     @Test
-    void testEven() {
+    void testShouldReturnTrueForEvenNumber() {
+        randomNum = (int)(Math.random() * Integer.MAX_VALUE); 
+        if(randomNum % 2 != 0){
+            randomNum++;
+        }   
         boolean expected = true;
-        boolean actual = EvenOdd.isEvenOrOdd(10); 
+        boolean actual = EvenOdd.isEvenOrOdd(randomNum);
         assertEquals(expected, actual);
     }
     @Test
-    void testOneEven() {
+    void testShouldReturnFalseForOddNumber() {
+        randomNum = (int)(Math.random() * Integer.MAX_VALUE); 
+        if(randomNum % 2 == 0){
+            randomNum++;
+        }   
+        boolean expected = false;
+        boolean actual = EvenOdd.isEvenOrOdd(randomNum);
+        assertEquals(expected, actual);
+    }
+    @Test
+    void testShouldReturnTrueForOddNumber() {
+        randomNum = (int)(Math.random() * Integer.MAX_VALUE);
+        if(randomNum % 2 == 0){
+            randomNum++;
+        }   
         boolean expected = true;
-        boolean actual = EvenOdd.isEvenOrOdd(1490); 
-        assertEquals(expected, actual);
+        boolean actual = EvenOdd.isEvenOrOdd(randomNum);
+        assertNotEquals(expected, actual);
     }
     @Test
-    void testTwoEven() {
-        boolean expected = true;
-        boolean actual = EvenOdd.isEvenOrOdd(-98); 
-        assertEquals(expected, actual);
-    }
-    @Test
-    void testThreeEven() {
-        boolean expected = true;
-        boolean actual = EvenOdd.isEvenOrOdd(2); 
-        assertEquals(expected, actual);
-    }
-    @Test
-    void testFourEven() {
-        boolean expected = true;
-        boolean actual = EvenOdd.isEvenOrOdd(6786); 
-        assertEquals(expected, actual);
-    }
-    @Test
-    void testNotEven() {
+    void testShouldReturnFalseForEven() {
+        randomNum = (int)(Math.random() * Integer.MAX_VALUE);
+        if(randomNum % 2 != 0){
+            randomNum++;
+        }   
         boolean expected = false;
-        boolean actual = EvenOdd.isEvenOrOdd(99); 
-        assertEquals(expected, actual);
-    }
-    @Test
-    void testNotOneEven() {
-        boolean expected = false;
-        boolean actual = EvenOdd.isEvenOrOdd(3); 
-        assertEquals(expected, actual);
-    }
-    @Test
-    void testNotTwoEven() {
-        boolean expected = false;
-        boolean actual = EvenOdd.isEvenOrOdd(769653); 
-        assertEquals(expected, actual);
-    }
-    @Test
-    void testNotThreeEven() {
-        boolean expected = false;
-        boolean actual = EvenOdd.isEvenOrOdd(77); 
-        assertEquals(expected, actual);
-    }
-    @Test
-    void testNotFourEven() {
-        boolean expected = false;
-        boolean actual = EvenOdd.isEvenOrOdd(9705); 
-        assertEquals(expected, actual);
-    }
-    @Test
-    public void testValueIsNull() {
-        String x = null;
-        assertNull(x); 
+        boolean actual = EvenOdd.isEvenOrOdd(randomNum);
+        assertNotEquals(expected, actual);
     }
 }
+
+
