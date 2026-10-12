@@ -74,7 +74,6 @@ public class DogDayCareStimulator {
             dogs.add(dog);
         }
         public DogDayCareStimulator findDogById(String id) {
-
             if (id == null || id.trim().isEmpty()) {
                 throw new IllegalArgumentException(
                         "ID cannot be blank");
