@@ -1,6 +1,7 @@
 com/marmin/app/largestnumberTest.class
 com/marmin/app/MultipleTwoNumbersTest.class
-com/marmin/app/GCDTest.class
 com/marmin/app/reverseIntegerTest.class
+com/marmin/app/DogDayCareStimulatorTest.class
+com/marmin/app/GCDTest.class
 com/marmin/app/GreaterThan100Test.class
 com/marmin/app/evenoroddTest.class
