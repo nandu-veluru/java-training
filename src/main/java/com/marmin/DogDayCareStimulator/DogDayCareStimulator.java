@@ -10,23 +10,20 @@ public class DogDayCareStimulator {
     private String breed;
     private int age;
     private String owner_name;
+    private boolean checkedIn;
 
     public DogDayCareStimulator(String id, String name, String breed,int age, String owner_name) {
         if (id == null || id.trim().isEmpty()) {
-            throw new IllegalArgumentException(
-                    "ID cannot be blank");
+            throw new IllegalArgumentException("ID cannot be blank");
         }
         if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException(
-                    "Dog name cannot be blank");
+            throw new IllegalArgumentException("Dog name cannot be blank");
         }
         if (breed == null || breed.trim().isEmpty()) {
-            throw new IllegalArgumentException(
-                    "Dog breed cannot be blank");
+            throw new IllegalArgumentException("Dog breed cannot be blank");
         }
         if (owner_name == null || owner_name.trim().isEmpty()) {
-            throw new IllegalArgumentException(
-                    "Owner name cannot be blank");
+            throw new IllegalArgumentException("Owner name cannot be blank");
         }
         if (age < 0) {
             throw new IllegalArgumentException("Age cannot be negative");
@@ -64,19 +61,16 @@ public class DogDayCareStimulator {
         private List<DogDayCareStimulator> dogs = new ArrayList<>();
         public void registerDog(DogDayCareStimulator dog) {
             if (dog == null) {
-                throw new IllegalArgumentException(
-                        "Dog cannot be null");
+                throw new IllegalArgumentException("Dog cannot be null");
             }
             if (findDogById(dog.getId()) != null) {
-                throw new IllegalArgumentException(
-                        "Duplicate dog ID: " + dog.getId());
+                throw new IllegalArgumentException("Duplicate dog ID: " + dog.getId());
             }
             dogs.add(dog);
         }
         public DogDayCareStimulator findDogById(String id) {
             if (id == null || id.trim().isEmpty()) {
-                throw new IllegalArgumentException(
-                        "ID cannot be blank");
+                throw new IllegalArgumentException("ID cannot be blank");
             }
             String searchId = id.trim();
             for (DogDayCareStimulator dog : dogs) {
@@ -85,6 +79,35 @@ public class DogDayCareStimulator {
                 }
             }
             return null;
+        }
+        public void checkInDog(String id) {
+            DogDayCareStimulator dog = findDogById(id);
+            if(dog == null) {
+                throw new IllegalArgumentException("Id cant be blank");
+            }
+            if(dog.checkedIn){
+                throw new IllegalArgumentException("Dog is already check in");
+            }
+            dog.checkedIn = true;
+        }
+        public void checkOutDog(String id){
+            DogDayCareStimulator dog = findDogById(id);
+            if(dog == null){
+                throw new IllegalArgumentException("id cant be blank");
+            }
+            if(!dog.checkedIn){
+                throw new IllegalArgumentException("Dog is already checked out");
+            }
+            dog.checkedIn = false;
+        }
+        public List<DogDayCareStimulator> ListCheckedIn() {
+            List<DogDayCareStimulator> checkedIn = new ArrayList<>();
+            for(DogDayCareStimulator dog : dogs){
+                if(dog.checkedIn){
+                    checkedIn.add(dog);
+                }
+            }
+            return checkedIn;
         }
         public List<DogDayCareStimulator> getAllDogs() {
             return new ArrayList<>(dogs);

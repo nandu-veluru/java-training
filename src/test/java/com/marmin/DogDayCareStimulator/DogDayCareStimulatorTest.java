@@ -7,12 +7,8 @@ class DogDayCareStimulatorTest {
 
     @Test
     void testDogDetailsArray() {
-        DogDayCareStimulator d =
-            new DogDayCareStimulator(
-                "D101", "Bruno", "Labrador", 3, "Alice");
-        String[] expected = {
-            "D101", "Bruno", "Labrador", "3", "Alice"
-        };
+        DogDayCareStimulator d = new DogDayCareStimulator("D101", "Bruno", "Labrador", 3, "Alice");
+        String[] expected = {"D101", "Bruno", "Labrador", "3", "Alice"};
         String[] actual = {
             d.getId(),
             d.getName(),
@@ -26,32 +22,35 @@ class DogDayCareStimulatorTest {
     @Test
     void testBlankId() {
         assertThrows(IllegalArgumentException.class, () ->
-            new DogDayCareStimulator(
-                " ", "Bruno", "Labrador", 3, "Alice"));
+            new DogDayCareStimulator(" ", "Bruno", "Labrador", 3, "Alice"));
     }
     @Test
     void testBlankName() {
         assertThrows(IllegalArgumentException.class, () ->
-            new DogDayCareStimulator(
-                "D101", " ", "Labrador", 3, "Alice"));
+            new DogDayCareStimulator("D101", " ", "Labrador", 3, "Alice"));
     }
     @Test
     void testBlankBreed() {
         assertThrows(IllegalArgumentException.class, () ->
-            new DogDayCareStimulator(
-                "D101", "Bruno", " ", 3, "Alice"));
+            new DogDayCareStimulator("D101", "Bruno", " ", 3, "Alice"));
     }
     @Test
     void testBlankOwnerName() {
         assertThrows(IllegalArgumentException.class, () ->
-            new DogDayCareStimulator(
-                "D101", "Bruno", "Labrador", 3, " "));
+            new DogDayCareStimulator("D101", "Bruno", "Labrador", 3, " "));
     }
     @Test
     void testNegativeAge() {
         assertThrows(IllegalArgumentException.class, () ->
-            new DogDayCareStimulator(
-                "D101", "Bruno", "Labrador", -1, "Alice"));
+            new DogDayCareStimulator("D101", "Bruno", "Labrador", -1, "Alice"));
+    }
+    @Test
+    void testDogIsCheckedIn(){
+        DogDayCareStimulator check = new DogDayCareStimulator();
+        boolean expected = true;
+        boolean actual = check.checkInDog();
+        assertEquals(expected, actual);
+
     }
     
 }
