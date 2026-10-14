@@ -63,5 +63,5 @@ class DogDayCareStimulatorTest {
     void testNegativeAge() {
         assertThrows(IllegalArgumentException.class, () ->
         new DogDayCareStimulator("D101", "Bruno", "Labrador", -1, "Alice"));
-    }    
+    }
 }

@@ -1,9 +1,2 @@
-com/marmin/app/DaycareService.class
-com/marmin/app/GreaterThan100.class
-com/marmin/app/GCD.class
 com/marmin/app/DogDayCareStimulator.class
-com/marmin/app/MultipleTwoNumbers.class
-com/marmin/app/reverseInteger.class
-com/marmin/app/largestnumber.class
-com/marmin/app/evenorodd.class
 com/marmin/app/Dog.class

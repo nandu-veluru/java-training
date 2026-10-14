@@ -11,6 +11,21 @@ class Dog {
     private String owner_name;
     protected boolean checkedIn;
 
+    public String getId() {
+        return id;
+    }
+    public String getName() {
+        return name;
+    }
+    public String getBreed() {
+        return breed;
+    }
+    public int getAge() {
+        return age;
+    }
+    public String getOwnerName() {
+        return owner_name;
+    }
     public Dog(String id, String name, String breed, int age, String owner_name) {
         if (id == null || id.trim().isEmpty())
             throw new IllegalArgumentException("ID cannot be blank");
@@ -28,21 +43,6 @@ class Dog {
         this.age = age;
         this.owner_name = owner_name.trim();
         this.checkedIn = false;
-    }
-    public String getId() {
-        return id;
-    }
-    public String getName() {
-        return name;
-    }
-    public String getBreed() {
-        return breed;
-    }
-    public int getAge() {
-        return age;
-    }
-    public String getOwnerName() {
-        return owner_name;
     }
     public String display() {
         return "Dog ID: " + id
@@ -70,18 +70,23 @@ class DaycareService {
         if (getDogCount() > maximumOccupancy) {
             throw new IllegalArgumentException("Maximum occupancy must be positive");
         }
-        if (minimumAge < 0 || maximumAge < minimumAge) {
+        if (minimumAge < 0 || minimumAge > maximumAge) {
             throw new IllegalArgumentException("Invalid age policy");
         }
         this.maximumOccupancy = maximumOccupancy;
         this.minimumAge = minimumAge;
         this.maximumAge = maximumAge;
     }
-    public void registerDog(DogDayCareStimulator dog) {
-        if (dog == null)
+     public void registerDog(Dog dog) {
+        if (dog == null) {
             throw new IllegalArgumentException("Dog cannot be null");
-        if (findDogById(dog.getId()) != null)
+        }
+        if (findDogById(dog.getId()) != null) {
             throw new IllegalArgumentException("Duplicate dog ID: " + dog.getId());
+        }
+        if (dog.getAge() < minimumAge || dog.getAge() > maximumAge) {
+            throw new IllegalArgumentException("Dog age must be between " + minimumAge + " and " + maximumAge + " years");
+        }
         dogs.add(dog);
     }
     public DogDayCareStimulator findDogById(String id) {
@@ -101,7 +106,6 @@ class DaycareService {
             throw new IllegalArgumentException("Dog is already checked in");
         dog.checkedIn = true;
     }
-
     public void checkOutDog(String id) {
         DogDayCareStimulator dog = findDogById(id);
         if (dog == null)
