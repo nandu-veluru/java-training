@@ -68,7 +68,7 @@ class DaycareService {
 
     public DaycareService(int maximumOccupancy, int minimumAge, int maximumAge) {
         if (getDogCount() > maximumOccupancy) {
-            throw new IllegalArgumentException("Maximum occupancy must be positive");
+            throw new IllegalArgumentException("Maximum Occupancy Reached");
         }
         if (minimumAge < 0 || minimumAge > maximumAge) {
             throw new IllegalArgumentException("Invalid age policy");
@@ -82,6 +82,10 @@ class DaycareService {
         if (dog.getAge() < minimumAge || dog.getAge() > maximumAge) {
             throw new IllegalArgumentException("Dog age must be between " + minimumAge + " and " + maximumAge + " years");
         }
+    }
+
+    public String display(){
+        return "The Dog Age should be in a range of " + minimumAge + "And" + maximumAge + "years";
     }
 
     public void registerDog(DogDayCareStimulator dog) {

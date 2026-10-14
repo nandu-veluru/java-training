@@ -16,7 +16,6 @@ class DogDayCareStimulatorTest {
             String.valueOf(d.getAge()),
             d.getOwnerName()
         };
-
         assertArrayEquals(expected, actual);
     }
     @Test
