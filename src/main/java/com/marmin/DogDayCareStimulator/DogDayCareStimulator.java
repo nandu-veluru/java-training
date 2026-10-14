@@ -83,7 +83,7 @@ class DaycareService {
             throw new IllegalArgumentException("Dog age must be between " + minimumAge + " and " + maximumAge + " years");
         }
     }
-    
+
     public void registerDog(DogDayCareStimulator dog) {
         if (dog == null) {
             throw new IllegalArgumentException("Dog cannot be null");
