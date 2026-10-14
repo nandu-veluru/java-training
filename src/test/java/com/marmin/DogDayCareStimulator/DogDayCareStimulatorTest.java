@@ -25,9 +25,19 @@ class DogDayCareStimulatorTest {
         new DogDayCareStimulator(" ", "Bruno", "Labrador", 3, "Alice"));
     }
     @Test
+    void testNullId() {
+        assertThrows(IllegalArgumentException.class, () ->
+        new DogDayCareStimulator(null, "Bruno", "Labrador", 3, "Alice"));
+    }
+    @Test
     void testBlankName() {
         assertThrows(IllegalArgumentException.class, () ->
         new DogDayCareStimulator("D101", " ", "Labrador", 3, "Alice"));
+    }
+    @Test
+    void testNullName() {
+        assertThrows(IllegalArgumentException.class, () ->
+        new DogDayCareStimulator("D101", null, "Labrador", 3, "Alice"));
     }
     @Test
     void testBlankBreed() {
@@ -35,9 +45,19 @@ class DogDayCareStimulatorTest {
         new DogDayCareStimulator("D101", "Bruno", " ", 3, "Alice"));
     }
     @Test
+    void testNullBreed() {
+        assertThrows(IllegalArgumentException.class, () ->
+        new DogDayCareStimulator("D101", "Bruno", null, 3, "Alice"));
+    }
+    @Test
     void testBlankOwnerName() {
         assertThrows(IllegalArgumentException.class, () ->
         new DogDayCareStimulator("D101", "Bruno", "Labrador", 3, " "));
+    }
+    @Test
+    void testNullOwnerName() {
+        assertThrows(IllegalArgumentException.class, () ->
+        new DogDayCareStimulator("D101", "Bruno", "Labrador", 3, null));
     }
     @Test
     void testNegativeAge() {
