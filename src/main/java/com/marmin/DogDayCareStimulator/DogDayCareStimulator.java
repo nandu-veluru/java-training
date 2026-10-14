@@ -77,15 +77,19 @@ class DaycareService {
         this.minimumAge = minimumAge;
         this.maximumAge = maximumAge;
     }
-     public void registerDog(Dog dog) {
+
+    public void checkAge(Dog dog){
+        if (dog.getAge() < minimumAge || dog.getAge() > maximumAge) {
+            throw new IllegalArgumentException("Dog age must be between " + minimumAge + " and " + maximumAge + " years");
+        }
+    }
+    
+    public void registerDog(DogDayCareStimulator dog) {
         if (dog == null) {
             throw new IllegalArgumentException("Dog cannot be null");
         }
         if (findDogById(dog.getId()) != null) {
             throw new IllegalArgumentException("Duplicate dog ID: " + dog.getId());
-        }
-        if (dog.getAge() < minimumAge || dog.getAge() > maximumAge) {
-            throw new IllegalArgumentException("Dog age must be between " + minimumAge + " and " + maximumAge + " years");
         }
         dogs.add(dog);
     }
