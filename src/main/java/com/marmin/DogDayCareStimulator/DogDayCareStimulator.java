@@ -147,7 +147,7 @@ class DaycareService {
         }
         StringBuilder result = new StringBuilder("CHECKED-IN DOGS");
         for (DogDayCareStimulator dog : presentDogs) {
-            result.append(dog.display()).append();
+            result.append(dog.display()).append("\n");
         }
         return result.toString();
     }
