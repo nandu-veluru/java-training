@@ -85,7 +85,6 @@ class DaycareService {
     public String display(){
         return "The Dog Age should be in a range of " + minimumAge + "And" + maximumAge + "years";
     }
-
     public void registerDog(DogDayCareStimulator dog) {
         if (dog == null) {
             throw new IllegalArgumentException("Dog cannot be null");
@@ -146,9 +145,9 @@ class DaycareService {
         if (presentDogs.isEmpty()) {
             return "No dogs are currently checked in.";
         }
-        StringBuilder result = new StringBuilder("===== CHECKED-IN DOGS =====\n");
+        StringBuilder result = new StringBuilder("CHECKED-IN DOGS");
         for (DogDayCareStimulator dog : presentDogs) {
-            result.append(dog.display()).append("\n");
+            result.append(dog.display()).append();
         }
         return result.toString();
     }
