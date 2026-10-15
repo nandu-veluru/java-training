@@ -67,8 +67,8 @@ class DaycareService {
     private int maximumAge;
 
     public DaycareService(int maximumOccupancy, int minimumAge, int maximumAge) {
-        if (getDogCount() > maximumOccupancy) {
-            throw new IllegalArgumentException("Maximum Occupancy Reached");
+        if (maximumOccupancy <= 0) {
+            throw new IllegalArgumentException("Maximum Occupancy cant be lesser than 0");
         }
         if (minimumAge < 0 || minimumAge > maximumAge) {
             throw new IllegalArgumentException("Invalid age policy");
@@ -77,13 +77,11 @@ class DaycareService {
         this.minimumAge = minimumAge;
         this.maximumAge = maximumAge;
     }
-
     public void checkAge(Dog dog){
         if (dog.getAge() < minimumAge || dog.getAge() > maximumAge) {
             throw new IllegalArgumentException("Dog age must be between " + minimumAge + " and " + maximumAge + " years");
         }
     }
-
     public String display(){
         return "The Dog Age should be in a range of " + minimumAge + "And" + maximumAge + "years";
     }
@@ -95,6 +93,7 @@ class DaycareService {
         if (findDogById(dog.getId()) != null) {
             throw new IllegalArgumentException("Duplicate dog ID: " + dog.getId());
         }
+        checkAge(dog);
         dogs.add(dog);
     }
     public DogDayCareStimulator findDogById(String id) {
@@ -129,6 +128,29 @@ class DaycareService {
                 checkedInDogs.add(dog);
         }
         return checkedInDogs;
+    }
+    public int totalCheckedIn(){
+        int count = 0;
+        for(DogDayCareStimulator dog : dogs){
+            if(dog.checkedIn){
+                count++;
+            }
+        }
+        return count;
+    }
+    public int remainingCapacity(){
+        return maximumOccupancy - totalCheckedIn();
+    }
+    public String getCheckedInDogsSummary() {
+        List<DogDayCareStimulator> presentDogs = listCheckedIn();
+        if (presentDogs.isEmpty()) {
+            return "No dogs are currently checked in.";
+        }
+        StringBuilder result = new StringBuilder("===== CHECKED-IN DOGS =====\n");
+        for (DogDayCareStimulator dog : presentDogs) {
+            result.append(dog.display()).append("\n");
+        }
+        return result.toString();
     }
     public List<DogDayCareStimulator> getAllDogs() {
         return new ArrayList<>(dogs);
