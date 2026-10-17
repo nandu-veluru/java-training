@@ -5,5 +5,6 @@ com/marmin/app/DogDayCareStimulator.class
 com/marmin/app/MultipleTwoNumbers.class
 com/marmin/app/reverseInteger.class
 com/marmin/app/largestnumber.class
+com/marmin/app/jsonWriter.class
 com/marmin/app/evenorodd.class
 com/marmin/app/Dog.class

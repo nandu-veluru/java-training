@@ -1,5 +1,4 @@
 package com.marmin.app;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,7 +56,7 @@ class Dog {
 }
 public class DogDayCareStimulator extends Dog {
     public DogDayCareStimulator(String id, String name, String breed, int age, String owner_name) {
-        super(id, name, breed, age, owner_name);
+        super(id, name, breed, age, owner_name);    
     }
 }
 class DaycareService {       
@@ -110,6 +109,8 @@ class DaycareService {
             throw new IllegalArgumentException("Dog not found");
         if (dog.checkedIn)
             throw new IllegalArgumentException("Dog is already checked in");
+        if (totalCheckedIn() >= maximumOccupancy)
+            throw new IllegalArgumentException("Day care reached to maximum capacity");
         dog.checkedIn = true;
     }
     public void checkOutDog(String id) {

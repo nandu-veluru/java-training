@@ -1,10 +1,11 @@
 package com.marmin.app;
 
 import org.junit.jupiter.api.Test;
+import java.nio.file.Path;
+import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DogDayCareStimulatorTest {
-
     @Test
     void testDogDetailsArray() {
         DogDayCareStimulator d = new DogDayCareStimulator("D101", "Bruno", "Labrador", 3, "Alice");
@@ -21,47 +22,56 @@ class DogDayCareStimulatorTest {
     @Test
     void testBlankId() {
         assertThrows(IllegalArgumentException.class, () ->
-        new DogDayCareStimulator(" ", "Bruno", "Labrador", 3, "Alice"));
+        new DogDayCareStimulator(" ", "Bruno", "Labrador", 3, "Alice")
+        );
     }
     @Test
     void testNullId() {
         assertThrows(IllegalArgumentException.class, () ->
-        new DogDayCareStimulator(null, "Bruno", "Labrador", 3, "Alice"));
+        new DogDayCareStimulator(null, "Bruno", "Labrador", 3, "Alice")
+        );
     }
     @Test
     void testBlankName() {
         assertThrows(IllegalArgumentException.class, () ->
-        new DogDayCareStimulator("D101", " ", "Labrador", 3, "Alice"));
+        new DogDayCareStimulator("D101", " ", "Labrador", 3, "Alice")
+        );
     }
     @Test
     void testNullName() {
         assertThrows(IllegalArgumentException.class, () ->
-        new DogDayCareStimulator("D101", null, "Labrador", 3, "Alice"));
+        new DogDayCareStimulator("D101", null, "Labrador", 3, "Alice")
+        );
     }
     @Test
     void testBlankBreed() {
         assertThrows(IllegalArgumentException.class, () ->
-        new DogDayCareStimulator("D101", "Bruno", " ", 3, "Alice"));
+        new DogDayCareStimulator("D101", "Bruno", " ", 3, "Alice")
+        );
     }
     @Test
     void testNullBreed() {
         assertThrows(IllegalArgumentException.class, () ->
-        new DogDayCareStimulator("D101", "Bruno", null, 3, "Alice"));
+        new DogDayCareStimulator("D101", "Bruno", null, 3, "Alice")
+        );
     }
     @Test
     void testBlankOwnerName() {
         assertThrows(IllegalArgumentException.class, () ->
-        new DogDayCareStimulator("D101", "Bruno", "Labrador", 3, " "));
+            new DogDayCareStimulator("D101", "Bruno", "Labrador", 3, " ")
+        );
     }
     @Test
     void testNullOwnerName() {
         assertThrows(IllegalArgumentException.class, () ->
-        new DogDayCareStimulator("D101", "Bruno", "Labrador", 3, null));
+        new DogDayCareStimulator("D101", "Bruno", "Labrador", 3, null)
+        );
     }
     @Test
     void testNegativeAge() {
         assertThrows(IllegalArgumentException.class, () ->
-        new DogDayCareStimulator("D101", "Bruno", "Labrador", -1, "Alice"));
+        new DogDayCareStimulator("D101", "Bruno", "Labrador", -1, "Alice")
+        );
     }
     @Test
     void testRegisterDog() {
@@ -80,9 +90,18 @@ class DogDayCareStimulatorTest {
     void testDuplicateDogId() {
         DaycareService service = new DaycareService(5, 1, 15);
         service.registerDog(new DogDayCareStimulator("D101", "Bruno", "Labrador", 3, "Alice"));
-        assertThrows(IllegalArgumentException.class, () -> service.registerDog(
-                    new DogDayCareStimulator("D101", "Max", "Beagle", 2, "Bob")));
+        assertThrows(IllegalArgumentException.class, () ->
+        service.registerDog(new DogDayCareStimulator("D101", "Max", "Beagle", 2, "Bob")));
         assertEquals(1, service.getDogCount());
     }
-
+    @Test
+    void testLoadDogsFromJsonFile() throws Exception {
+    java.nio.file.Path path = java.nio.file.Path.of("DogCare.json");
+    assertTrue(java.nio.file.Files.exists(path), "DogCare.json file should exist");
+    String content = java.nio.file.Files.readString(path);
+    long count = content.lines()
+        .filter(line -> !line.trim().isEmpty())
+        .count();
+    assertTrue(count >= 3, "The JSON file should contain at least three dog records");
+}
 }
